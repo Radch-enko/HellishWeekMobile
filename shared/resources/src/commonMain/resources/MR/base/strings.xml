@@ -1,4 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="testString">Test String</string>
+    <string name="app_name">Hellish Week</string>
+
+    <!--Preview screen-->
+    <string name="registration">Registration</string>
+    <string name="sign_in">Sign in</string>
+    <string name="improve_yourself">Improve yourself</string>
+    <string name="improve_yourself_desc">Do the chelledges every week and get better</string>
+
+    <!--Registration screen-->
+    <string name="your_info">Your info</string>
+    <string name="name_placeholder">Name</string>
+    <string name="birthday_placeholder">Date</string>
+    <string name="country_placeholder">Country</string>
+    <string name="gender_placeholder">Gender</string>
+    <string name="already_have_account">Already have account? Sign in</string>
+    <string name="not_registered_yet">No account? Sign up now!</string>
+    <string name="next">Next</string>
+    <string name="email_placeholder">Email</string>
+    <string name="password_placeholder">Password</string>
+    <string name="password_again_placeholder">Password again</string>
+    <string name="cant_remember">I cant remember</string>
+
+    <!--Authorization screen-->
+    <string name="remember_my_password">I forgot my password</string>
+    <string name="restore_my_password">Restore password</string>
+    <string name="restore_my_password_desc">Write your account email and we will send the code to it.</string>
+    <string name="get_reset_code">Get code</string>
+    <string name="back_return">Return</string>
+
+
 </resources>

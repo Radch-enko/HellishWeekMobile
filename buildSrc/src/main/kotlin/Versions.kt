@@ -1,4 +1,12 @@
 object Versions {
+    const val SplashScreen = "1.0.0"
+    const val NavigationCompose = "2.5.3"
+    const val CoroutinesVersion = "1.6.3"
+    const val KotlinSerializationVersion = "1.3.3"
+    const val ktorVersion = "2.0.3"
+    const val koinVersion = "3.2.0"
+    const val multiplatform_settingsVersion = "0.9"
+    const val mokoVersion = "0.20.1"
 
     object Project {
         const val kotlin_version = "1.7.10"
@@ -17,10 +25,7 @@ object Versions {
         }
     }
 
-    const val CoroutinesVersion = "1.6.3"
-    const val KotlinSerializationVersion = "1.3.3"
-    const val ktorVersion = "2.0.3"
-    const val koinVersion = "3.2.0"
-    const val multiplatform_settingsVersion = "0.9"
-    const val mokoVersion = "0.20.1"
+    object Accompanist {
+        const val HorizontalPager = "0.25.1"
+    }
 }

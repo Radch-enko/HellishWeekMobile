@@ -35,5 +35,10 @@ dependencies {
     implementation(Dependencies.AndroidX.Compose.ToolingPreview)
     implementation(Dependencies.AndroidX.Compose.Foundation)
     implementation(Dependencies.AndroidX.Compose.Material)
+    implementation(Dependencies.AndroidX.Compose.MaterialIcons)
     implementation(Dependencies.AndroidX.Compose.Activity)
+    implementation(Dependencies.AndroidX.Compose.Navigation)
+    implementation(Dependencies.AndroidX.Compose.SplashScreen)
+    implementation(Dependencies.Accompanist.HorizontalPager)
+    implementation(Dependencies.Accompanist.HorizontalIndicators)
 }

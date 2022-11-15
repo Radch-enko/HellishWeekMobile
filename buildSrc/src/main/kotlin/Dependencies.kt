@@ -12,9 +12,22 @@ object Dependencies {
                 "androidx.compose.foundation:foundation:${Versions.AndroidX.Compose.foundation}"
             const val Material =
                 "androidx.compose.material:material:${Versions.AndroidX.Compose.material}"
+            const val MaterialIcons =
+                "androidx.compose.material:material-icons-extended:${Versions.AndroidX.Compose.ui}"
             const val Activity =
                 "androidx.activity:activity-compose:${Versions.AndroidX.Compose.activity}"
+            const val Navigation =
+                "androidx.navigation:navigation-compose:${Versions.NavigationCompose}"
+
+            const val SplashScreen = "androidx.core:core-splashscreen:${Versions.SplashScreen}"
         }
+    }
+
+    object Accompanist {
+        const val HorizontalPager =
+            "com.google.accompanist:accompanist-pager:${Versions.Accompanist.HorizontalPager}"
+        const val HorizontalIndicators =
+            "com.google.accompanist:accompanist-pager-indicators:${Versions.Accompanist.HorizontalPager}"
     }
 
     object Coroutines {

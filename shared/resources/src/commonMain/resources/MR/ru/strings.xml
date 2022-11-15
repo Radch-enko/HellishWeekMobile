@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Адская неделя</string>
+
+    <!--Preview screen-->
+    <string name="registration">Регистрация</string>
+    <string name="sign_in">Войти в аккаунт</string>
+    <string name="improve_yourself">Совершенствуйтесь</string>
+    <string name="improve_yourself_desc">Выполняйте челленджи каждую неделю и становитесь лучше
+    </string>
+
+    <!--Registration screen-->
+    <string name="your_info">Ваши данные</string>
+    <string name="name_placeholder">Имя</string>
+    <string name="birthday_placeholder">Дата рождения</string>
+    <string name="country_placeholder">Страна</string>
+    <string name="gender_placeholder">Пол</string>
+    <string name="already_have_account">Уже есть аккаунт? Авторизуйтесь</string>
+    <string name="not_registered_yet">Нет аккаунта? Зарегистрируйтесь!</string>
+    <string name="next">Далее</string>
+    <string name="email_placeholder">Почта</string>
+    <string name="password_placeholder">Пароль</string>
+    <string name="password_again_placeholder">Проверка пароля</string>
+    <string name="cant_remember">Не помню</string>
+
+    <!--Authorization screen-->
+    <string name="remember_my_password">Забыл пароль</string>
+    <string name="restore_my_password">Восстановление пароля</string>
+    <string name="restore_my_password_desc">Напишите свою почту, привязанную к аккаунта и на неё мы отправим код</string>
+    <string name="get_reset_code">Получить код</string>
+    <string name="back_return">Вернуться</string>
+
+</resources>
