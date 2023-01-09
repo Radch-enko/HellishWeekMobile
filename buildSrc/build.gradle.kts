@@ -5,7 +5,6 @@ plugins {
 repositories {
     mavenCentral()
     google()
-
     gradlePluginPortal()
 }
 
@@ -15,7 +14,15 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     }
 }
 
+val rootDirProject = file("../")
+
+kotlin {
+    sourceSets.getByName("main").kotlin.srcDir("buildSrc/src/main/kotlin")
+}
+
 dependencies {
-    api("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.10")
-    api("com.android.tools.build:gradle:7.2.1")
+    implementation(Plugins.kotlinGradlePlugin)
+    implementation(Plugins.androidBuildGradlePlugin)
+    implementation(Plugins.kotlinSerializationGradlePlugin)
+    implementation(Plugins.mokoResourceGeneratorPlugin)
 }

@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import com.blesscompany.hellishweek.mobile.android.ui.Mercury
+import com.blesscompany.hellishweek.mobile.android.ui.YourPink
 
 @Composable
 fun TextFieldDefault(
@@ -22,6 +23,7 @@ fun TextFieldDefault(
     visualTransformation: VisualTransformation = VisualTransformation.None,
     trailingIcon: @Composable (() -> Unit)? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    isError: Boolean = false
 ) {
     TextField(
         value = value,
@@ -34,7 +36,7 @@ fun TextFieldDefault(
             )
         },
         colors = TextFieldDefaults.textFieldColors(
-            backgroundColor = Mercury,
+            backgroundColor = if (isError) YourPink else Mercury,
             unfocusedIndicatorColor = Color.Transparent,
             focusedIndicatorColor = Color.Transparent
         ),

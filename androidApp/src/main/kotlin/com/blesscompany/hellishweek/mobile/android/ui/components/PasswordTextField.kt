@@ -18,9 +18,11 @@ fun PasswordTextField(
     value: String,
     onValueChange: (String) -> Unit,
     placeholder: String,
+    isError: Boolean = false
 ) {
     var passwordVisible by rememberSaveable { mutableStateOf(false) }
-    TextFieldDefault(value = value,
+    TextFieldDefault(
+        value = value,
         onValueChange = onValueChange,
         placeholder = placeholder,
         visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
@@ -34,5 +36,7 @@ fun PasswordTextField(
             IconButton(onClick = { passwordVisible = !passwordVisible }) {
                 Icon(imageVector = image, description)
             }
-        })
+        },
+        isError = isError
+    )
 }

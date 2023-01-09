@@ -9,11 +9,13 @@ fun EmailTextInput(
     value: String,
     onValueChange: (String) -> Unit,
     placeholder: String,
+    isError: Boolean = false
 ) {
     TextFieldDefault(
         value = value,
         onValueChange = onValueChange,
         placeholder = placeholder,
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+        isError = isError
     )
 }

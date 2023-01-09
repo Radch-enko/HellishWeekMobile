@@ -67,6 +67,7 @@ fun AuthorizationScreen(onBack: () -> Unit, goToRegistration: () -> Unit) {
                     value = email,
                     onValueChange = { email = it },
                     placeholder = stringResource(id = Resources.strings.email_placeholder.resourceId),
+                    isError = false
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -74,6 +75,7 @@ fun AuthorizationScreen(onBack: () -> Unit, goToRegistration: () -> Unit) {
                     value = password,
                     onValueChange = { password = it },
                     placeholder = stringResource(id = Resources.strings.password_placeholder.resourceId),
+                    isError = false
                 )
 
                 val annotatedLinkString: AnnotatedString = buildAnnotatedString {
@@ -151,7 +153,8 @@ private fun ForgotPassword(showDialog: Boolean, setShowDialog: (Boolean) -> Unit
                         onValueChange = { email = it },
                         placeholder = stringResource(
                             id = Resources.strings.email_placeholder.resourceId
-                        )
+                        ),
+                        isError = false
                     )
                     Spacer(modifier = Modifier.height(16.dp))
                     DefaultButton(

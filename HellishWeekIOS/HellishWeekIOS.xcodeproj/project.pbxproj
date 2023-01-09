@@ -1,0 +1,428 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8368603C29261BDC00BB8724 /* HellishWeekIOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368603B29261BDC00BB8724 /* HellishWeekIOSApp.swift */; };
+		8368604029261BDD00BB8724 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8368603F29261BDD00BB8724 /* Assets.xcassets */; };
+		8368604329261BDD00BB8724 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8368604229261BDD00BB8724 /* Preview Assets.xcassets */; };
+		8368604B2926800D00BB8724 /* PreviewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368604A2926800D00BB8724 /* PreviewScreen.swift */; };
+		8368604F29268D1600BB8724 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368604E29268D1600BB8724 /* SplashScreen.swift */; };
+		836860512926976300BB8724 /* StartFlowScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836860502926976300BB8724 /* StartFlowScreen.swift */; };
+		AA61E812245F6944033B5CB2 /* Pods_HellishWeekIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699999919AC2E720037C681E /* Pods_HellishWeekIOS.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3B75C8BC82A02E43331F3D8F /* Pods-HellishWeekIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HellishWeekIOS.debug.xcconfig"; path = "Target Support Files/Pods-HellishWeekIOS/Pods-HellishWeekIOS.debug.xcconfig"; sourceTree = "<group>"; };
+		699999919AC2E720037C681E /* Pods_HellishWeekIOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HellishWeekIOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8368603829261BDC00BB8724 /* HellishWeekIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HellishWeekIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8368603B29261BDC00BB8724 /* HellishWeekIOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HellishWeekIOSApp.swift; sourceTree = "<group>"; };
+		8368603F29261BDD00BB8724 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8368604229261BDD00BB8724 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8368604A2926800D00BB8724 /* PreviewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewScreen.swift; sourceTree = "<group>"; };
+		8368604E29268D1600BB8724 /* SplashScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SplashScreen.swift; path = ../../../../../.Trash/SplashScreen.swift; sourceTree = "<group>"; };
+		836860502926976300BB8724 /* StartFlowScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartFlowScreen.swift; sourceTree = "<group>"; };
+		D0D43FF9F37D162257ED4CB2 /* Pods-HellishWeekIOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HellishWeekIOS.release.xcconfig"; path = "Target Support Files/Pods-HellishWeekIOS/Pods-HellishWeekIOS.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8368603529261BDC00BB8724 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA61E812245F6944033B5CB2 /* Pods_HellishWeekIOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		481D4B253BFD677D288283DA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B75C8BC82A02E43331F3D8F /* Pods-HellishWeekIOS.debug.xcconfig */,
+				D0D43FF9F37D162257ED4CB2 /* Pods-HellishWeekIOS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8368602F29261BDC00BB8724 = {
+			isa = PBXGroup;
+			children = (
+				8368603A29261BDC00BB8724 /* HellishWeekIOS */,
+				8368603929261BDC00BB8724 /* Products */,
+				481D4B253BFD677D288283DA /* Pods */,
+				A7B2DBBF046E4134D47E6D62 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8368603929261BDC00BB8724 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8368603829261BDC00BB8724 /* HellishWeekIOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8368603A29261BDC00BB8724 /* HellishWeekIOS */ = {
+			isa = PBXGroup;
+			children = (
+				8368604929267FD400BB8724 /* Views */,
+				8368603B29261BDC00BB8724 /* HellishWeekIOSApp.swift */,
+				8368603F29261BDD00BB8724 /* Assets.xcassets */,
+				8368604129261BDD00BB8724 /* Preview Content */,
+			);
+			path = HellishWeekIOS;
+			sourceTree = "<group>";
+		};
+		8368604129261BDD00BB8724 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8368604229261BDD00BB8724 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8368604929267FD400BB8724 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8368604E29268D1600BB8724 /* SplashScreen.swift */,
+				8368604A2926800D00BB8724 /* PreviewScreen.swift */,
+				836860502926976300BB8724 /* StartFlowScreen.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A7B2DBBF046E4134D47E6D62 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				699999919AC2E720037C681E /* Pods_HellishWeekIOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8368603729261BDC00BB8724 /* HellishWeekIOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8368604629261BDD00BB8724 /* Build configuration list for PBXNativeTarget "HellishWeekIOS" */;
+			buildPhases = (
+				539B92ADFF04CC0AED0605BC /* [CP] Check Pods Manifest.lock */,
+				8368603429261BDC00BB8724 /* Sources */,
+				8368603529261BDC00BB8724 /* Frameworks */,
+				8368603629261BDC00BB8724 /* Resources */,
+				45673D6F94FB88AFA9AB6732 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HellishWeekIOS;
+			productName = HellishWeekIOS;
+			productReference = 8368603829261BDC00BB8724 /* HellishWeekIOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8368603029261BDC00BB8724 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					8368603729261BDC00BB8724 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 8368603329261BDC00BB8724 /* Build configuration list for PBXProject "HellishWeekIOS" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8368602F29261BDC00BB8724;
+			productRefGroup = 8368603929261BDC00BB8724 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8368603729261BDC00BB8724 /* HellishWeekIOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8368603629261BDC00BB8724 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8368604329261BDD00BB8724 /* Preview Assets.xcassets in Resources */,
+				8368604029261BDD00BB8724 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		45673D6F94FB88AFA9AB6732 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HellishWeekIOS/Pods-HellishWeekIOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HellishWeekIOS/Pods-HellishWeekIOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HellishWeekIOS/Pods-HellishWeekIOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		539B92ADFF04CC0AED0605BC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HellishWeekIOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8368603429261BDC00BB8724 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8368604F29268D1600BB8724 /* SplashScreen.swift in Sources */,
+				8368603C29261BDC00BB8724 /* HellishWeekIOSApp.swift in Sources */,
+				836860512926976300BB8724 /* StartFlowScreen.swift in Sources */,
+				8368604B2926800D00BB8724 /* PreviewScreen.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		8368604429261BDD00BB8724 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8368604529261BDD00BB8724 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8368604729261BDD00BB8724 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B75C8BC82A02E43331F3D8F /* Pods-HellishWeekIOS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HellishWeekIOS/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = band.effective.HellishWeekIOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		8368604829261BDD00BB8724 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0D43FF9F37D162257ED4CB2 /* Pods-HellishWeekIOS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HellishWeekIOS/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = band.effective.HellishWeekIOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8368603329261BDC00BB8724 /* Build configuration list for PBXProject "HellishWeekIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8368604429261BDD00BB8724 /* Debug */,
+				8368604529261BDD00BB8724 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8368604629261BDD00BB8724 /* Build configuration list for PBXNativeTarget "HellishWeekIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8368604729261BDD00BB8724 /* Debug */,
+				8368604829261BDD00BB8724 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8368603029261BDC00BB8724 /* Project object */;
+}
