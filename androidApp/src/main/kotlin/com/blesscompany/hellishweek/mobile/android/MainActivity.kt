@@ -3,6 +3,7 @@ package com.blesscompany.hellishweek.mobile.android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -14,8 +15,10 @@ import androidx.core.view.WindowCompat
 import androidx.navigation.compose.rememberNavController
 import com.blesscompany.hellishweek.mobile.android.navigation.ApplicationRoot
 import com.blesscompany.hellishweek.mobile.android.ui.HellishWeekTheme
+import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalAnimationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         WindowCompat.setDecorFitsSystemWindows(window, false)
@@ -27,13 +30,14 @@ class MainActivity : ComponentActivity() {
                         .fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    ApplicationRoot(navController = rememberNavController())
+                    ApplicationRoot(navController = rememberAnimatedNavController())
                 }
             }
         }
     }
 }
 
+@OptIn(ExperimentalAnimationApi::class)
 @Preview
 @Composable
 fun DefaultPreview() {
@@ -43,7 +47,7 @@ fun DefaultPreview() {
                 modifier = Modifier.fillMaxSize(),
                 color = MaterialTheme.colors.background
             ) {
-                ApplicationRoot(navController = rememberNavController())
+                ApplicationRoot(navController = rememberAnimatedNavController())
             }
         }
     }

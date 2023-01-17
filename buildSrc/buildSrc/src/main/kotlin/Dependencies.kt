@@ -38,6 +38,7 @@ object Dependencies {
             "com.google.accompanist:accompanist-pager:$horizontalPager"
         const val HorizontalIndicators =
             "com.google.accompanist:accompanist-pager-indicators:$horizontalPager"
+        const val AnimatedNavigation = "com.google.accompanist:accompanist-navigation-animation:0.29.0-alpha"
     }
 
     object Coroutines {
@@ -76,10 +77,11 @@ object Dependencies {
 
 
     object Koin {
-        const val koinVersion = "3.2.0"
+        private const val koinVersion = "3.2.0"
         const val Core = "io.insert-koin:koin-core:$koinVersion"
         const val Android =
             "io.insert-koin:koin-android:$koinVersion"
+        const val Compose = "io.insert-koin:koin-androidx-compose:$koinVersion"
     }
 
     object MOKO {
@@ -91,4 +93,6 @@ object Dependencies {
         const val resources_compose =
             "dev.icerock.moko:resources-compose:$mokoVersion"
     }
+
+    const val Timber = "com.jakewharton.timber:timber:5.0.1"
 }

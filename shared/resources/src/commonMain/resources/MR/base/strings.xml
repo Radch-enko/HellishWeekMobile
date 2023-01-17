@@ -22,12 +22,44 @@
     <string name="password_again_placeholder">Password again</string>
     <string name="cant_remember">I cant remember</string>
 
+    <!--Registration Form Validation-->
+    <string name="name_is_empty">Name must not be empty</string>
+    <string name="date_is_empty">Date must not be empty</string>
+    <string name="country_is_empty">Country must not be empty</string>
+    <string name="gender_is_empty">Gender must not be empty</string>
+    <string name="email_incorrect">Incorrect email</string>
+    <string name="password_again_incorrect">The passwords dont match</string>
+
     <!--Authorization screen-->
     <string name="remember_my_password">I forgot my password</string>
     <string name="restore_my_password">Restore password</string>
-    <string name="restore_my_password_desc">Write your account email and we will send the code to it.</string>
+    <string name="restore_my_password_desc">Write your account email and we will send the code to
+        it.
+    </string>
     <string name="get_reset_code">Get code</string>
     <string name="back_return">Return</string>
 
+    <!--Authorization validation-->
+    <string name="password_requirement_capital">
+        At least 1 upper-case letter
+    </string>
+
+    <string name="password_requirement_digit">
+        At least 1 digit
+    </string>
+    <string name="password_is_empty">Password is empty</string>
+    <string name="username_is_empty">Username is empty</string>
+    <string name="create_account">Create account</string>
+    <string name="password_requirement_satisfied">
+        %s, satisfied
+    </string>
+    <string name="password_requirement_needed">
+        %s, needed
+    </string>
+    <string name="passwords_are_same">Passwords are same</string>
+    <string name="password_requirement_characters">
+        At least 8 characters
+    </string>
+    <string name="sign_in_form_incorrect">Email or password are wrong</string>
 
 </resources>

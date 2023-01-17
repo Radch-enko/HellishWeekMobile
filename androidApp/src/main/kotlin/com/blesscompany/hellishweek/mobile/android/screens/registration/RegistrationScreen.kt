@@ -2,10 +2,7 @@ package com.blesscompany.hellishweek.mobile.android.screens.registration
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.ClickableText
-import androidx.compose.material.ContentAlpha
-import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,6 +13,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.blesscompany.hellishweek.common.utils.Gender
 import com.blesscompany.hellishweek.mobile.android.ui.Boulder
 import com.blesscompany.hellishweek.mobile.android.ui.components.*
 import com.blesscompany.hellishweek.resources.Resources
@@ -24,28 +22,43 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.launch
+import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun RegistrationScreen(onBack: () -> Unit, goToAuthorization: () -> Unit) {
+fun RegistrationScreen(
+    onBack: () -> Unit,
+    goToAuthorization: () -> Unit,
+    viewModel: RegistrationScreenViewModel = koinViewModel()
+) {
+    val state by viewModel.state.collectAsState()
     val pagerState = rememberPagerState()
     val scope = rememberCoroutineScope()
 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(16.dp),
+        contentAlignment = Alignment.Center
     ) {
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(top = 120.dp),
+                .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Box(
                 modifier = Modifier.fillMaxWidth()
             ) {
-                BackButton(modifier = Modifier.align(Alignment.CenterStart), onButtonClick = onBack)
+                BackButton(
+                    modifier = Modifier.align(Alignment.CenterStart),
+                    onButtonClick = {
+                        if (pagerState.currentPage == 0) {
+                            onBack()
+                        } else {
+                            scope.launch { pagerState.animateScrollToPage(0) }
+                        }
+                    }
+                )
                 Text(
                     modifier = Modifier.align(Alignment.Center),
                     text = stringResource(id = Resources.strings.registration.resourceId),
@@ -65,10 +78,10 @@ fun RegistrationScreen(onBack: () -> Unit, goToAuthorization: () -> Unit) {
                 ) {
                     when (currentPage) {
                         0 -> {
-                            FirstPartOfRegistrationSlide()
+                            FirstPartOfRegistrationSlide(state, viewModel::sendEvent)
                         }
                         1 -> {
-                            SecondPartOfRegistrationSlide()
+                            SecondPartOfRegistrationSlide(state, viewModel::sendEvent)
                         }
                     }
 
@@ -99,88 +112,83 @@ fun RegistrationScreen(onBack: () -> Unit, goToAuthorization: () -> Unit) {
             HorizontalPagerIndicator(pagerState = pagerState)
         }
 
-        DefaultButton(modifier = Modifier
-            .align(Alignment.BottomEnd)
-            .padding(bottom = 100.dp),
+        DefaultButton(
             text = if (pagerState.currentPage == 0) stringResource(id = Resources.strings.next.resourceId) else stringResource(
                 id = Resources.strings.registration.resourceId
             ),
-            onClick = { scope.launch { pagerState.animateScrollToPage(1) } })
+            onClick = { scope.launch { pagerState.animateScrollToPage(1) } },
+            modifier = Modifier
+                .align(Alignment.BottomEnd),
+            isLoading = state.isLoading
+        )
     }
 }
 
 @Composable
-private fun FirstPartOfRegistrationSlide() {
-    var name by remember {
-        mutableStateOf("")
-    }
-    var date by remember {
-        mutableStateOf("")
-    }
-    var country by remember {
-        mutableStateOf("")
-    }
-    var gender by remember {
-        mutableStateOf("")
-    }
-
+private fun FirstPartOfRegistrationSlide(
+    state: RegistrationScreenViewModel.State,
+    sendEvent: (RegistrationScreenViewModel.Event) -> Unit
+) {
     TextFieldDefault(
-        value = name,
-        onValueChange = { name = it },
+        value = state.name,
+        onValueChange = { sendEvent(RegistrationScreenViewModel.Event.InterName(it)) },
         placeholder = stringResource(id = Resources.strings.name_placeholder.resourceId),
+        errorMessage = state.nameError?.resourceId?.let { stringResource(id = it) }
     )
 
     Spacer(modifier = Modifier.height(16.dp))
     TextFieldDefault(
-        value = date,
-        onValueChange = { date = it },
+        value = state.date.toString(),
+        onValueChange = { sendEvent(RegistrationScreenViewModel.Event.InterDate(null)) },
         placeholder = stringResource(id = Resources.strings.birthday_placeholder.resourceId),
+        errorMessage = state.dateError?.resourceId?.let { stringResource(id = it) }
     )
 
     Spacer(modifier = Modifier.height(16.dp))
     TextFieldDefault(
-        value = country,
-        onValueChange = { country = it },
+        value = state.country,
+        onValueChange = { sendEvent(RegistrationScreenViewModel.Event.InterCountry(it)) },
         placeholder = stringResource(id = Resources.strings.country_placeholder.resourceId),
+        errorMessage = state.countryError?.resourceId?.let { stringResource(id = it) }
     )
 
     Spacer(modifier = Modifier.height(16.dp))
-    TextFieldDefault(
-        value = gender,
-        onValueChange = { gender = it },
+
+    DropDownTextField(
+        text = state.gender?.name.orEmpty(),
+        possibleValues = Gender.values().toList(),
         placeholder = stringResource(id = Resources.strings.gender_placeholder.resourceId),
-    )
+        errorMessage = state.genderError?.resourceId?.let { stringResource(id = it) },
+    ) { gender: Gender ->
+        sendEvent(
+            RegistrationScreenViewModel.Event.InterGender(gender)
+        )
+    }
 }
 
 @Composable
-private fun SecondPartOfRegistrationSlide() {
-    var email by remember {
-        mutableStateOf("")
-    }
-    var password by remember {
-        mutableStateOf("")
-    }
-    var passwordAgain by remember {
-        mutableStateOf("")
-    }
-
+private fun SecondPartOfRegistrationSlide(
+    state: RegistrationScreenViewModel.State,
+    sendEvent: (RegistrationScreenViewModel.Event) -> Unit
+) {
     EmailTextInput(
-        value = email,
-        onValueChange = { email = it },
+        value = state.email,
+        onValueChange = { sendEvent(RegistrationScreenViewModel.Event.InterEmail(it)) },
         placeholder = stringResource(id = Resources.strings.email_placeholder.resourceId),
+        errorMessage = state.emailError?.resourceId?.let { stringResource(id = it) }
     )
 
     Spacer(modifier = Modifier.height(16.dp))
     PasswordTextField(
-        value = password,
-        onValueChange = { password = it },
+        value = state.password,
+        onValueChange = { sendEvent(RegistrationScreenViewModel.Event.InterPassword(it)) },
         placeholder = stringResource(id = Resources.strings.password_placeholder.resourceId),
     )
 
     Spacer(modifier = Modifier.height(16.dp))
     PasswordTextField(
-        value = passwordAgain,
-        onValueChange = { passwordAgain = it },
+        value = state.passwordAgain,
+        onValueChange = { sendEvent(RegistrationScreenViewModel.Event.InterPasswordAgain(it)) },
         placeholder = stringResource(id = Resources.strings.password_again_placeholder.resourceId)
     )
 }

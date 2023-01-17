@@ -65,13 +65,15 @@ fun HellishWeekTheme(
         darkColors(
             primary = Color(0xFFBB86FC),
             primaryVariant = Color(0xFF3700B3),
-            secondary = Color(0xFF03DAC5)
+            secondary = Color(0xFF03DAC5),
+            error = Cinnabar
         )
     } else {
         lightColors(
             primary = Color(0xFFF2905F),
             primaryVariant = Color(0xFF3700B3),
-            secondary = Color(0xFFD7D7D7)
+            secondary = Color(0xFFD7D7D7),
+            error = Cinnabar
         )
     }
     val typography = Typography(

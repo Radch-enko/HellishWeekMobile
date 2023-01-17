@@ -17,8 +17,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 fun PasswordTextField(
     value: String,
     onValueChange: (String) -> Unit,
-    placeholder: String,
-    isError: Boolean = false
+    placeholder: String
 ) {
     var passwordVisible by rememberSaveable { mutableStateOf(false) }
     TextFieldDefault(
@@ -37,6 +36,6 @@ fun PasswordTextField(
                 Icon(imageVector = image, description)
             }
         },
-        isError = isError
+        errorMessage = null
     )
 }

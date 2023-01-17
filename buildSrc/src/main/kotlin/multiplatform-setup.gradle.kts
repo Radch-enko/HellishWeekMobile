@@ -10,7 +10,7 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
 
-    sourceSets{
+    sourceSets {
 
         val commonMain by getting {
             dependencies {

@@ -24,12 +24,14 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-//                api(project(Modules.core))
-//                api(project(Modules.domain))
-//                api(project(Modules.models))
-//                api(project(Modules.network))
+                api(Dependencies.Koin.Core)
+
+                api(project(Modules.common))
+                api(project(Modules.navigation))
                 api(project(Modules.resources))
-//                api(project(Modules.injector))
+                api(project(Modules.injector))
+                api(project(Modules.Features.authorization))
+                api(project(Modules.Features.registration))
             }
         }
         val androidMain by getting {

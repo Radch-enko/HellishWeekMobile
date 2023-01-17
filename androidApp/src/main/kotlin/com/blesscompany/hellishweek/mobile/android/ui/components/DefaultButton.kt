@@ -1,12 +1,12 @@
 package com.blesscompany.hellishweek.mobile.android.ui.components
 
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonColors
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun DefaultButton(
@@ -14,7 +14,8 @@ fun DefaultButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    colors: ButtonColors = ButtonDefaults.buttonColors()
+    colors: ButtonColors = ButtonDefaults.buttonColors(),
+    isLoading: Boolean = false
 ) {
     Button(
         modifier = modifier,
@@ -23,6 +24,10 @@ fun DefaultButton(
         shape = RoundedCornerShape(30),
         colors = colors
     ) {
-        Text(text = text)
+        if (isLoading) CircularProgressIndicator(
+            color = Color.White,
+            modifier = Modifier.size(20.dp)
+        )
+        else Text(text = text)
     }
 }

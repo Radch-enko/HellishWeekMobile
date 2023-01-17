@@ -1,12 +1,14 @@
 package com.blesscompany.hellishweek.mobile.android.ui.components
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Error
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -23,25 +25,47 @@ fun TextFieldDefault(
     visualTransformation: VisualTransformation = VisualTransformation.None,
     trailingIcon: @Composable (() -> Unit)? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    isError: Boolean = false
+    errorMessage: String? = null,
+    enabled: Boolean = true,
 ) {
-    TextField(
-        value = value,
-        onValueChange = onValueChange,
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(14.dp),
-        placeholder = {
+    val isError = !errorMessage.isNullOrBlank()
+    val error: @Composable (() -> Unit) = {
+        Icon(
+            Icons.Filled.Error,
+            "error",
+            tint = MaterialTheme.colors.error
+        )
+    }
+
+    Column {
+        TextField(
+            value = value,
+            onValueChange = onValueChange,
+            modifier = Modifier.fillMaxWidth(),
+            shape = RoundedCornerShape(14.dp),
+            placeholder = {
+                Text(
+                    text = placeholder, style = MaterialTheme.typography.body2
+                )
+            },
+            colors = TextFieldDefaults.textFieldColors(
+                backgroundColor = if (isError) YourPink else Mercury,
+                unfocusedIndicatorColor = Color.Transparent,
+                focusedIndicatorColor = Color.Transparent
+            ),
+            visualTransformation = visualTransformation,
+            trailingIcon = if (isError) error else trailingIcon,
+            keyboardOptions = keyboardOptions,
+            enabled = enabled
+        )
+
+        if (isError && !errorMessage.isNullOrBlank()) {
             Text(
-                text = placeholder, style = MaterialTheme.typography.body2
+                text = errorMessage,
+                color = MaterialTheme.colors.error,
+                style = MaterialTheme.typography.caption,
+                modifier = Modifier.padding(start = 16.dp)
             )
-        },
-        colors = TextFieldDefaults.textFieldColors(
-            backgroundColor = if (isError) YourPink else Mercury,
-            unfocusedIndicatorColor = Color.Transparent,
-            focusedIndicatorColor = Color.Transparent
-        ),
-        visualTransformation = visualTransformation,
-        trailingIcon = trailingIcon,
-        keyboardOptions = keyboardOptions
-    )
+        }
+    }
 }

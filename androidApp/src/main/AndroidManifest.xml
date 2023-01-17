@@ -4,7 +4,8 @@
 
     <application
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name=".HellishWeekApp">
         <activity
             android:name="com.blesscompany.hellishweek.mobile.android.MainActivity"
             android:exported="true"

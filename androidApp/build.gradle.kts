@@ -41,4 +41,10 @@ dependencies {
     implementation(Dependencies.AndroidX.Compose.SplashScreen)
     implementation(Dependencies.Accompanist.HorizontalPager)
     implementation(Dependencies.Accompanist.HorizontalIndicators)
+    implementation(Dependencies.Accompanist.AnimatedNavigation)
+
+    implementation(Dependencies.Koin.Core)
+    implementation(Dependencies.Koin.Android)
+    implementation(Dependencies.Koin.Compose)
+    implementation(Dependencies.Timber)
 }

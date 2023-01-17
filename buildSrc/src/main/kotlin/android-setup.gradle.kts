@@ -11,14 +11,16 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     sourceSets {
-        named("main") {
-            res.setSrcDirs(listOf("src/androidMain/res", "src/commonMain/resources"))
-            manifest.srcFile("src/androidMain/AndroidManifest.xml")
+        compileSdk = AndroidConfigData.compileSdkVersion
+        sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+        defaultConfig {
+            minSdk = AndroidConfigData.minSdkVersion
+            targetSdk = AndroidConfigData.targetSdkVersion
         }
     }
 }

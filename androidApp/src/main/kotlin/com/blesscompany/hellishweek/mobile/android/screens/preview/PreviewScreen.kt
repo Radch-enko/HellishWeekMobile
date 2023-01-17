@@ -44,7 +44,7 @@ fun PreviewScreen(goToRegistration: () -> Unit, goToAuthorization: () -> Unit) {
             Spacer(modifier = Modifier.height(20.dp))
             DefaultButton(
                 text = stringResource(id = Resources.strings.sign_in.resourceId),
-                onClick = goToAuthorization
+                onClick = goToAuthorization,
             )
         }
     }
