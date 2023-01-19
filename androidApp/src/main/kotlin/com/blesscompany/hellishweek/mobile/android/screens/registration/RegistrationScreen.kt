@@ -27,13 +27,19 @@ import org.koin.androidx.compose.koinViewModel
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun RegistrationScreen(
+    selectedCountry: String?,
     onBack: () -> Unit,
     goToAuthorization: () -> Unit,
-    viewModel: RegistrationScreenViewModel = koinViewModel()
+    viewModel: RegistrationScreenViewModel = koinViewModel(),
+    goToCountrySearcher: () -> Unit
 ) {
     val state by viewModel.state.collectAsState()
     val pagerState = rememberPagerState()
     val scope = rememberCoroutineScope()
+
+    if (!selectedCountry.isNullOrBlank()) {
+        viewModel.sendEvent(RegistrationScreenViewModel.Event.InterCountry(selectedCountry))
+    }
 
     Box(
         modifier = Modifier
@@ -78,7 +84,11 @@ fun RegistrationScreen(
                 ) {
                     when (currentPage) {
                         0 -> {
-                            FirstPartOfRegistrationSlide(state, viewModel::sendEvent)
+                            FirstPartOfRegistrationSlide(
+                                state,
+                                viewModel::sendEvent,
+                                goToCountrySearcher
+                            )
                         }
                         1 -> {
                             SecondPartOfRegistrationSlide(state, viewModel::sendEvent)
@@ -127,7 +137,8 @@ fun RegistrationScreen(
 @Composable
 private fun FirstPartOfRegistrationSlide(
     state: RegistrationScreenViewModel.State,
-    sendEvent: (RegistrationScreenViewModel.Event) -> Unit
+    sendEvent: (RegistrationScreenViewModel.Event) -> Unit,
+    goToCountrySearcher: () -> Unit
 ) {
     TextFieldDefault(
         value = state.name,
@@ -137,17 +148,21 @@ private fun FirstPartOfRegistrationSlide(
     )
 
     Spacer(modifier = Modifier.height(16.dp))
-    TextFieldDefault(
-        value = state.date.toString(),
-        onValueChange = { sendEvent(RegistrationScreenViewModel.Event.InterDate(null)) },
+    DatePickerTextField(
+        value = state.date,
+        onDateSelected = { date: kotlinx.datetime.LocalDate ->
+            sendEvent(
+                RegistrationScreenViewModel.Event.InterDate(date)
+            )
+        },
         placeholder = stringResource(id = Resources.strings.birthday_placeholder.resourceId),
-        errorMessage = state.dateError?.resourceId?.let { stringResource(id = it) }
+        errorMessage = state.dateError?.resourceId?.let { stringResource(id = it) },
     )
 
     Spacer(modifier = Modifier.height(16.dp))
-    TextFieldDefault(
+    ClickableField(
         value = state.country,
-        onValueChange = { sendEvent(RegistrationScreenViewModel.Event.InterCountry(it)) },
+        onClick = goToCountrySearcher,
         placeholder = stringResource(id = Resources.strings.country_placeholder.resourceId),
         errorMessage = state.countryError?.resourceId?.let { stringResource(id = it) }
     )

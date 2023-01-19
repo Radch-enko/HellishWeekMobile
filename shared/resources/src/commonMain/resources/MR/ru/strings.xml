@@ -62,4 +62,8 @@
     <string name="passwords_are_same">Пароли совпадают</string>
     <string name="sign_in_form_incorrect">Неправильные почта или пароль</string>
 
+    <!--Country Searcher-->
+    <string name="search">Поиск</string>
+    <string name="example_error">Пример ошибки</string>
+
 </resources>

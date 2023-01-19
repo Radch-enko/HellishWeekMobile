@@ -10,6 +10,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(Modules.resources))
+                api(Dependencies.Datetime)
             }
         }
     }

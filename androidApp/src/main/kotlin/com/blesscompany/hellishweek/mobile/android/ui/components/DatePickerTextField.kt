@@ -6,27 +6,38 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.ArrowDropUp
+import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.blesscompany.hellishweek.common.utils.toPrettyString
 import com.blesscompany.hellishweek.mobile.android.ui.Mercury
 import com.blesscompany.hellishweek.mobile.android.ui.YourPink
+import com.maxkeppeker.sheets.core.models.base.SheetState
+import com.maxkeppeker.sheets.core.models.base.rememberSheetState
+import com.maxkeppeler.sheets.date_time.DateTimeDialog
+import com.maxkeppeler.sheets.date_time.models.DateTimeSelection
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.toKotlinLocalDate
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun <T> DropDownTextField(
-    text: String,
-    possibleValues: List<T>,
+fun DatePickerTextField(
+    value: LocalDate?,
+    onDateSelected: (LocalDate) -> Unit,
     placeholder: String,
-    errorMessage: String? = null,
-    onSelected: (T) -> Unit
+    errorMessage: String?
 ) {
-    var genderMenuExpanded by remember { mutableStateOf(false) }
-    val isError = !errorMessage.isNullOrBlank()
+    var pickerVisible by remember { mutableStateOf(false) }
 
+    DatePickerDialog(
+        visible = pickerVisible,
+        onCloseRequest = { pickerVisible = false },
+        onDateSelected = onDateSelected
+    )
+
+    val isError = !errorMessage.isNullOrBlank()
     Surface(
         modifier = Modifier.defaultMinSize(
             minWidth = TextFieldDefaults.MinWidth,
@@ -45,37 +56,27 @@ fun <T> DropDownTextField(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .noRippleClickable { genderMenuExpanded = true },
+                    .noRippleClickable { pickerVisible = true },
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                AnimatedContent(targetState = text.ifEmpty { placeholder }) {
+
+                AnimatedContent(
+                    targetState = value?.toPrettyString() ?: placeholder
+                ) {
                     MediumAlphaText(
                         text = it,
                         style = MaterialTheme.typography.body2,
                         level = if (it == placeholder) ContentAlpha.medium else ContentAlpha.high
                     )
                 }
-                Box(contentAlignment = Alignment.Center) {
-                    Icon(
-                        if (genderMenuExpanded) Icons.Filled.ArrowDropUp else Icons.Filled.ArrowDropDown,
-                        contentDescription = null
-                    )
-
-                    DropdownMenu(
-                        expanded = genderMenuExpanded,
-                        onDismissRequest = { genderMenuExpanded = false }
-                    ) {
-                        possibleValues.forEach { value ->
-                            DropdownMenuItem(onClick = {
-                                onSelected(value)
-                                genderMenuExpanded = false
-                            }) {
-                                Text(value.toString())
-                            }
-                        }
-                    }
-                }
+                Icon(
+                    imageVector = Icons.Default.DateRange,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(20.dp, 20.dp),
+                    tint = MaterialTheme.colors.onSurface
+                )
             }
 
             if (isError && !errorMessage.isNullOrBlank()) {
@@ -88,4 +89,22 @@ fun <T> DropDownTextField(
             }
         }
     }
+}
+
+@Composable
+private fun DatePickerDialog(
+    visible: Boolean,
+    onCloseRequest: (SheetState.() -> Unit)? = null,
+    onDateSelected: (LocalDate) -> Unit,
+) {
+    val state = rememberSheetState(visible = false, onCloseRequest = onCloseRequest)
+
+    DateTimeDialog(
+        state = state,
+        selection = DateTimeSelection.Date { newDate ->
+            onDateSelected(newDate.toKotlinLocalDate())
+        }
+    )
+
+    if (visible) state.show() else state.hide()
 }

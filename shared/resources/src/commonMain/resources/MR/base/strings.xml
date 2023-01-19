@@ -62,4 +62,7 @@
     </string>
     <string name="sign_in_form_incorrect">Email or password are wrong</string>
 
+    <!--Country Searcher-->
+    <string name="search">Search</string>
+    <string name="example_error">Example error</string>
 </resources>

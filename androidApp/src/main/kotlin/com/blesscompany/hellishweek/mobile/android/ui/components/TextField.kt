@@ -1,7 +1,7 @@
 package com.blesscompany.hellishweek.mobile.android.ui.components
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -23,10 +23,11 @@ fun TextFieldDefault(
     onValueChange: (String) -> Unit,
     placeholder: String,
     visualTransformation: VisualTransformation = VisualTransformation.None,
-    trailingIcon: @Composable (() -> Unit)? = null,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
-    errorMessage: String? = null,
+    leadingIcon: @Composable (() -> Unit)? = null,
+    trailingIcon: @Composable (() -> Unit)? = null,
     enabled: Boolean = true,
+    errorMessage: String? = null
 ) {
     val isError = !errorMessage.isNullOrBlank()
     val error: @Composable (() -> Unit) = {
@@ -54,18 +55,21 @@ fun TextFieldDefault(
                 focusedIndicatorColor = Color.Transparent
             ),
             visualTransformation = visualTransformation,
+            leadingIcon = leadingIcon,
             trailingIcon = if (isError) error else trailingIcon,
             keyboardOptions = keyboardOptions,
             enabled = enabled
         )
 
-        if (isError && !errorMessage.isNullOrBlank()) {
-            Text(
-                text = errorMessage,
-                color = MaterialTheme.colors.error,
-                style = MaterialTheme.typography.caption,
-                modifier = Modifier.padding(start = 16.dp)
-            )
+        AnimatedVisibility(visible = isError && !errorMessage.isNullOrBlank()) {
+            if (errorMessage != null) {
+                Text(
+                    text = errorMessage,
+                    color = MaterialTheme.colors.error,
+                    style = MaterialTheme.typography.caption,
+                    modifier = Modifier.padding(start = 16.dp)
+                )
+            }
         }
     }
 }

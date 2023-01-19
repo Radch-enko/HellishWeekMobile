@@ -42,9 +42,12 @@ dependencies {
     implementation(Dependencies.Accompanist.HorizontalPager)
     implementation(Dependencies.Accompanist.HorizontalIndicators)
     implementation(Dependencies.Accompanist.AnimatedNavigation)
+    implementation(Dependencies.Accompanist.SystemUI)
 
     implementation(Dependencies.Koin.Core)
     implementation(Dependencies.Koin.Android)
     implementation(Dependencies.Koin.Compose)
     implementation(Dependencies.Timber)
+    implementation(Dependencies.AndroidX.Compose.Dialogs.DialogsCore)
+    implementation(Dependencies.AndroidX.Compose.Dialogs.DateTime)
 }

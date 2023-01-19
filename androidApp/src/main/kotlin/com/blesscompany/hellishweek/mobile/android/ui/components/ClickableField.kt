@@ -5,10 +5,7 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowDropDown
-import androidx.compose.material.icons.filled.ArrowDropUp
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -17,16 +14,13 @@ import com.blesscompany.hellishweek.mobile.android.ui.YourPink
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun <T> DropDownTextField(
-    text: String,
-    possibleValues: List<T>,
+fun ClickableField(
+    value: String?,
+    onClick: () -> Unit,
     placeholder: String,
-    errorMessage: String? = null,
-    onSelected: (T) -> Unit
+    errorMessage: String?
 ) {
-    var genderMenuExpanded by remember { mutableStateOf(false) }
     val isError = !errorMessage.isNullOrBlank()
-
     Surface(
         modifier = Modifier.defaultMinSize(
             minWidth = TextFieldDefaults.MinWidth,
@@ -45,36 +39,18 @@ fun <T> DropDownTextField(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .noRippleClickable { genderMenuExpanded = true },
+                    .noRippleClickable(onClick),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                AnimatedContent(targetState = text.ifEmpty { placeholder }) {
+                AnimatedContent(
+                    targetState = value?.ifEmpty { placeholder } ?: placeholder
+                ) {
                     MediumAlphaText(
                         text = it,
                         style = MaterialTheme.typography.body2,
                         level = if (it == placeholder) ContentAlpha.medium else ContentAlpha.high
                     )
-                }
-                Box(contentAlignment = Alignment.Center) {
-                    Icon(
-                        if (genderMenuExpanded) Icons.Filled.ArrowDropUp else Icons.Filled.ArrowDropDown,
-                        contentDescription = null
-                    )
-
-                    DropdownMenu(
-                        expanded = genderMenuExpanded,
-                        onDismissRequest = { genderMenuExpanded = false }
-                    ) {
-                        possibleValues.forEach { value ->
-                            DropdownMenuItem(onClick = {
-                                onSelected(value)
-                                genderMenuExpanded = false
-                            }) {
-                                Text(value.toString())
-                            }
-                        }
-                    }
                 }
             }
 

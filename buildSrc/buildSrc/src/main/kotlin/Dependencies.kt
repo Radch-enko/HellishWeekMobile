@@ -29,16 +29,26 @@ object Dependencies {
                 "androidx.navigation:navigation-compose:$navigationCompose"
 
             const val SplashScreen = "androidx.core:core-splashscreen:$splashScreen"
+
+            object Dialogs {
+                private const val version = "1.0.3"
+                const val DialogsCore = "com.maxkeppeler.sheets-compose-dialogs:core:$version"
+                const val Calendar = "com.maxkeppeler.sheets-compose-dialogs:calendar:$version"
+                const val DateTime = "com.maxkeppeler.sheets-compose-dialogs:date-time:$version"
+            }
         }
     }
 
     object Accompanist {
         const val horizontalPager = "0.25.1"
+        const val version = "0.29.0-alpha"
         const val HorizontalPager =
             "com.google.accompanist:accompanist-pager:$horizontalPager"
         const val HorizontalIndicators =
             "com.google.accompanist:accompanist-pager-indicators:$horizontalPager"
-        const val AnimatedNavigation = "com.google.accompanist:accompanist-navigation-animation:0.29.0-alpha"
+        const val AnimatedNavigation =
+            "com.google.accompanist:accompanist-navigation-animation:$version"
+        const val SystemUI = "com.google.accompanist:accompanist-systemuicontroller:$version"
     }
 
     object Coroutines {
@@ -95,4 +105,5 @@ object Dependencies {
     }
 
     const val Timber = "com.jakewharton.timber:timber:5.0.1"
+    const val Datetime = "org.jetbrains.kotlinx:kotlinx-datetime:0.4.0"
 }
