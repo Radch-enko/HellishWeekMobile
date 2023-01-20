@@ -27,65 +27,67 @@ fun <T> DropDownTextField(
     var genderMenuExpanded by remember { mutableStateOf(false) }
     val isError = !errorMessage.isNullOrBlank()
 
-    Surface(
-        modifier = Modifier.defaultMinSize(
-            minWidth = TextFieldDefaults.MinWidth,
-            minHeight = TextFieldDefaults.MinHeight
-        ), color = if (isError) YourPink else Mercury, shape = RoundedCornerShape(14.dp)
-    ) {
-        Column(
-            modifier = Modifier.padding(
-                top = 3.dp,
-                start = 16.dp,
-                bottom = 4.dp,
-                end = 16.dp
-            ),
-            verticalArrangement = Arrangement.Center
+    Column {
+        Surface(
+            modifier = Modifier.defaultMinSize(
+                minWidth = TextFieldDefaults.MinWidth,
+                minHeight = TextFieldDefaults.MinHeight
+            ), color = if (isError) YourPink else Mercury, shape = RoundedCornerShape(14.dp)
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .noRippleClickable { genderMenuExpanded = true },
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
+            Column(
+                modifier = Modifier.padding(
+                    top = 3.dp,
+                    start = 16.dp,
+                    bottom = 4.dp,
+                    end = 16.dp
+                ),
+                verticalArrangement = Arrangement.Center
             ) {
-                AnimatedContent(targetState = text.ifEmpty { placeholder }) {
-                    MediumAlphaText(
-                        text = it,
-                        style = MaterialTheme.typography.body2,
-                        level = if (it == placeholder) ContentAlpha.medium else ContentAlpha.high
-                    )
-                }
-                Box(contentAlignment = Alignment.Center) {
-                    Icon(
-                        if (genderMenuExpanded) Icons.Filled.ArrowDropUp else Icons.Filled.ArrowDropDown,
-                        contentDescription = null
-                    )
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .noRippleClickable { genderMenuExpanded = true },
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    AnimatedContent(targetState = text.ifEmpty { placeholder }) {
+                        MediumAlphaText(
+                            text = it,
+                            style = MaterialTheme.typography.body2,
+                            level = if (it == placeholder) ContentAlpha.medium else ContentAlpha.high
+                        )
+                    }
+                    Box(contentAlignment = Alignment.Center) {
+                        Icon(
+                            if (genderMenuExpanded) Icons.Filled.ArrowDropUp else Icons.Filled.ArrowDropDown,
+                            contentDescription = null
+                        )
 
-                    DropdownMenu(
-                        expanded = genderMenuExpanded,
-                        onDismissRequest = { genderMenuExpanded = false }
-                    ) {
-                        possibleValues.forEach { value ->
-                            DropdownMenuItem(onClick = {
-                                onSelected(value)
-                                genderMenuExpanded = false
-                            }) {
-                                Text(value.toString())
+                        DropdownMenu(
+                            expanded = genderMenuExpanded,
+                            onDismissRequest = { genderMenuExpanded = false }
+                        ) {
+                            possibleValues.forEach { value ->
+                                DropdownMenuItem(onClick = {
+                                    onSelected(value)
+                                    genderMenuExpanded = false
+                                }) {
+                                    Text(value.toString())
+                                }
                             }
                         }
                     }
                 }
             }
+        }
 
-            if (isError && !errorMessage.isNullOrBlank()) {
-                Text(
-                    text = errorMessage,
-                    color = MaterialTheme.colors.error,
-                    style = MaterialTheme.typography.caption,
-                    modifier = Modifier.padding(start = 16.dp)
-                )
-            }
+        if (isError && !errorMessage.isNullOrBlank()) {
+            Text(
+                text = errorMessage,
+                color = MaterialTheme.colors.error,
+                style = MaterialTheme.typography.caption,
+                modifier = Modifier.padding(start = 16.dp)
+            )
         }
     }
 }

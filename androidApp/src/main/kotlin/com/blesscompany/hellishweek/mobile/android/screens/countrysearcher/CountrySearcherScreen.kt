@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.blesscompany.hellishweek.mobile.android.ui.Alto
 import com.blesscompany.hellishweek.mobile.android.ui.components.BackButton
 import com.blesscompany.hellishweek.mobile.android.ui.components.ErrorMessage
 import com.blesscompany.hellishweek.resources.Resources
@@ -154,7 +155,7 @@ fun SearchField(
                 .fillMaxWidth(),
             placeholder = {
                 Text(
-                    text = placeholder, style = MaterialTheme.typography.body1
+                    text = placeholder, style = MaterialTheme.typography.body1, color = Alto
                 )
             },
             colors = TextFieldDefaults.textFieldColors(

@@ -8,11 +8,10 @@ import com.blesscompany.hellishweek.features.registration.PasswordRequirements
 import com.blesscompany.hellishweek.resources.Resources
 import dev.icerock.moko.resources.StringResource
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.datetime.LocalDate
+import timber.log.Timber
 
 class RegistrationScreenViewModel : ViewModel() {
 
@@ -29,21 +28,26 @@ class RegistrationScreenViewModel : ViewModel() {
         val emailError: StringResource? = null,
         val password: String = "",
         val passwordRequirements: Set<PasswordRequirements> = emptySet(),
-        val passwordError: StringResource? = null,
         val passwordAgain: String = "",
-        val passwordAgainError: StringResource? = null,
         val isLoading: Boolean = false,
-        val error: String? = null
+        val error: StringResource? = null
     ) {
         fun isValid(): Boolean {
-            return nameError == null && dateError == null && countryError == null && genderError == null && emailError == null && passwordRequirements.containsAll(
-                PasswordRequirements.values().toSet()
-            ) && passwordAgainError == null
+            return isFirstPartValid() && isLastPartValid()
         }
+
+        fun isFirstPartValid(): Boolean =
+            nameError == null && dateError == null && countryError == null && genderError == null
+
+        fun isLastPartValid(): Boolean = emailError == null && passwordRequirements.containsAll(
+            PasswordRequirements.values().toSet()
+        )
     }
 
     sealed class Event {
         object Registration : Event()
+        object Next : Event()
+
         class InterName(val name: String) : Event()
         class InterDate(val date: LocalDate?) : Event()
         class InterCountry(val country: String) : Event()
@@ -52,6 +56,13 @@ class RegistrationScreenViewModel : ViewModel() {
         class InterPassword(val password: String) : Event()
         class InterPasswordAgain(val passwordAgain: String) : Event()
     }
+
+    sealed class Effect {
+        object CanGoNext : Effect()
+    }
+
+    private val mutableEffect = MutableSharedFlow<Effect>()
+    val sharedEffect = mutableEffect.asSharedFlow()
 
     private val mutableStateFlow = MutableStateFlow(State())
     val state = mutableStateFlow.asStateFlow()
@@ -67,20 +78,27 @@ class RegistrationScreenViewModel : ViewModel() {
                 }
             }
             is Event.InterDate -> {
-                mutableStateFlow.update { it.copy(date = event.date) }
+                mutableStateFlow.update {
+                    it.copy(
+                        date = event.date,
+                        dateError = if (event.date == null) Resources.strings.date_is_empty else null
+                    )
+                }
             }
             is Event.InterEmail -> {
                 mutableStateFlow.update {
                     it.copy(
-                        email = event.email,
-                        emailError = if (event.email.isEmailValid()
-                                .not()
-                        ) Resources.strings.email_incorrect else null
+                        email = event.email.trim()
                     )
                 }
             }
             is Event.InterGender -> {
-                mutableStateFlow.update { it.copy(gender = event.gender) }
+                mutableStateFlow.update {
+                    it.copy(
+                        gender = event.gender,
+                        genderError = null
+                    )
+                }
             }
             is Event.InterName -> {
                 mutableStateFlow.update {
@@ -93,6 +111,7 @@ class RegistrationScreenViewModel : ViewModel() {
             is Event.InterPassword -> updatePassword(event.password)
             is Event.InterPasswordAgain -> updatePasswordAgain(event.passwordAgain)
             Event.Registration -> doRegistration()
+            Event.Next -> doNext()
         }
     }
 
@@ -107,39 +126,64 @@ class RegistrationScreenViewModel : ViewModel() {
         if (password.any { it.isDigit() }) {
             requirements.add(PasswordRequirements.NUMBER)
         }
-        if (password == state.value.passwordAgain) {
+        if (password.trim() == state.value.passwordAgain.trim() && password.trim().isNotEmpty()) {
             requirements.add(PasswordRequirements.PASSWORDS_ARE_SAME)
         }
 
         mutableStateFlow.update {
-            it.copy(password = password, passwordRequirements = requirements)
+            it.copy(password = password.trim(), passwordRequirements = requirements)
         }
     }
 
     private fun updatePasswordAgain(passwordAgain: String) {
-        val requirements = state.value.passwordRequirements.toMutableSet()
-        if (passwordAgain == state.value.password) {
-            requirements.add(PasswordRequirements.PASSWORDS_ARE_SAME)
-        }
-
         mutableStateFlow.update {
-            it.copy(passwordAgain = passwordAgain, passwordRequirements = requirements)
+            it.copy(passwordAgain = passwordAgain.trim())
+        }
+        updatePassword(state.value.password)
+    }
+
+    private fun validateFieldsOfFirstPart() {
+        mutableStateFlow.update { it.copy(countryError = if (it.country.isBlank()) Resources.strings.country_is_empty else null) }
+        mutableStateFlow.update { it.copy(dateError = if (it.date == null) Resources.strings.date_is_empty else null) }
+        mutableStateFlow.update {
+            it.copy(
+                name = it.name.trim(),
+                nameError = if (it.name.isBlank()) Resources.strings.name_is_empty else null
+            )
+        }
+        mutableStateFlow.update { it.copy(genderError = if (it.gender == null) Resources.strings.gender_is_empty else null) }
+    }
+
+    private fun validateFieldsOfSecondPart() {
+        mutableStateFlow.update {
+            it.copy(
+                emailError = if (state.value.email.isEmailValid().not()
+                ) Resources.strings.email_incorrect else null
+            )
+        }
+        updatePassword(state.value.password)
+        updatePasswordAgain(state.value.passwordAgain)
+    }
+
+    private fun doNext() = viewModelScope.launch {
+        validateFieldsOfFirstPart()
+        if (state.value.isFirstPartValid()) {
+            mutableEffect.emit(Effect.CanGoNext)
         }
     }
 
     private fun doRegistration() = viewModelScope.launch {
-        mutableStateFlow.update {
-            it.copy(
-                dateError = if (it.date == null) Resources.strings.date_is_empty else null,
-                genderError = if (it.gender == null) Resources.strings.gender_is_empty else null,
-                passwordAgainError = if (it.passwordAgain != it.password) Resources.strings.password_again_incorrect else null
-            )
-        }
+        validateFieldsOfSecondPart()
 
         if (state.value.isValid()) {
             mutableStateFlow.update { it.copy(isLoading = true) }
             delay(1500)
             mutableStateFlow.update { it.copy(isLoading = false) }
+            exampleNetworkRequest(state.value)
         }
+    }
+
+    private fun exampleNetworkRequest(value: State) {
+        Timber.d("User info: $value")
     }
 }

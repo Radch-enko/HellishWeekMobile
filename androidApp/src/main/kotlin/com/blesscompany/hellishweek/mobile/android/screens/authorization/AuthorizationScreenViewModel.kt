@@ -65,10 +65,6 @@ class AuthorizationScreenViewModel : ViewModel() {
     }
 
     private fun isValidForm(email: String, password: String): Boolean {
-        return when {
-            !email.isEmailValid() -> false
-            !password.isPasswordValid() -> false
-            else -> true
-        }
+        return email.isEmailValid() && password.isNotBlank()
     }
 }

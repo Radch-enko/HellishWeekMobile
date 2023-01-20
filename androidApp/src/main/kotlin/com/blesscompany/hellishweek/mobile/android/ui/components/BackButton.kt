@@ -18,5 +18,5 @@ fun BackButton(onButtonClick: () -> Unit, modifier: Modifier) {
 @Preview
 @Composable
 fun BackButtonPreview() {
-    BackButton(onButtonClick = { /*TODO*/ }, modifier = Modifier)
+    BackButton(onButtonClick = { }, modifier = Modifier)
 }

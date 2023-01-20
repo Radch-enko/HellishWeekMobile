@@ -30,6 +30,7 @@
     <string name="gender_is_empty">Не указан пол</string>
     <string name="email_incorrect">Неправильная почта</string>
     <string name="password_again_incorrect">Пароли не совпадают</string>
+    <string name="check_all_fields">Проверьте все поля</string>
 
     <!--Authorization screen-->
     <string name="remember_my_password">Забыл пароль</string>

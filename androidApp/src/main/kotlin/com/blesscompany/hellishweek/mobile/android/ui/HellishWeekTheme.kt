@@ -71,9 +71,11 @@ fun HellishWeekTheme(
     } else {
         lightColors(
             primary = Color(0xFFF2905F),
-            primaryVariant = Color(0xFF3700B3),
-            secondary = Color(0xFFD7D7D7),
-            error = Cinnabar
+            primaryVariant = Color(0xFFF59B6D),
+            secondary = Color(0xFF88d2f7),
+            secondaryVariant = Color(0xFF2A78BF),
+            error = Cinnabar,
+            onSecondary = Color.White
         )
     }
     val typography = Typography(

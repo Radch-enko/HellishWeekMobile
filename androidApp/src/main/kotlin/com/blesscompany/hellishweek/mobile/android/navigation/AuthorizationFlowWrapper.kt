@@ -13,7 +13,6 @@ import com.blesscompany.hellishweek.shared.navigation.destination.AuthRoute
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
-import kotlinx.coroutines.flow.first
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable

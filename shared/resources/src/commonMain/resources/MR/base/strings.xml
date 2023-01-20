@@ -29,6 +29,7 @@
     <string name="gender_is_empty">Gender must not be empty</string>
     <string name="email_incorrect">Incorrect email</string>
     <string name="password_again_incorrect">The passwords dont match</string>
+    <string name="check_all_fields">Check all fields please</string>
 
     <!--Authorization screen-->
     <string name="remember_my_password">I forgot my password</string>

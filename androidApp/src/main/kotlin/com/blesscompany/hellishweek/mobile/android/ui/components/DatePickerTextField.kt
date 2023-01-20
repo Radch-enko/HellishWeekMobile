@@ -38,55 +38,58 @@ fun DatePickerTextField(
     )
 
     val isError = !errorMessage.isNullOrBlank()
-    Surface(
-        modifier = Modifier.defaultMinSize(
-            minWidth = TextFieldDefaults.MinWidth,
-            minHeight = TextFieldDefaults.MinHeight
-        ), color = if (isError) YourPink else Mercury, shape = RoundedCornerShape(14.dp)
-    ) {
-        Column(
-            modifier = Modifier.padding(
-                top = 3.dp,
-                start = 16.dp,
-                bottom = 4.dp,
-                end = 16.dp
-            ),
-            verticalArrangement = Arrangement.Center
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .noRippleClickable { pickerVisible = true },
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
 
-                AnimatedContent(
-                    targetState = value?.toPrettyString() ?: placeholder
+    Column {
+        Surface(
+            modifier = Modifier.defaultMinSize(
+                minWidth = TextFieldDefaults.MinWidth,
+                minHeight = TextFieldDefaults.MinHeight
+            ), color = if (isError) YourPink else Mercury, shape = RoundedCornerShape(14.dp)
+        ) {
+            Column(
+                modifier = Modifier.padding(
+                    top = 3.dp,
+                    start = 16.dp,
+                    bottom = 4.dp,
+                    end = 16.dp
+                ),
+                verticalArrangement = Arrangement.Center
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .noRippleClickable { pickerVisible = true },
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    MediumAlphaText(
-                        text = it,
-                        style = MaterialTheme.typography.body2,
-                        level = if (it == placeholder) ContentAlpha.medium else ContentAlpha.high
+
+                    AnimatedContent(
+                        targetState = value?.toPrettyString() ?: placeholder
+                    ) {
+                        MediumAlphaText(
+                            text = it,
+                            style = MaterialTheme.typography.body2,
+                            level = if (it == placeholder) ContentAlpha.medium else ContentAlpha.high
+                        )
+                    }
+                    Icon(
+                        imageVector = Icons.Default.DateRange,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(20.dp, 20.dp),
+                        tint = MaterialTheme.colors.onSurface
                     )
                 }
-                Icon(
-                    imageVector = Icons.Default.DateRange,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(20.dp, 20.dp),
-                    tint = MaterialTheme.colors.onSurface
-                )
             }
+        }
 
-            if (isError && !errorMessage.isNullOrBlank()) {
-                Text(
-                    text = errorMessage,
-                    color = MaterialTheme.colors.error,
-                    style = MaterialTheme.typography.caption,
-                    modifier = Modifier.padding(start = 16.dp)
-                )
-            }
+        if (isError && !errorMessage.isNullOrBlank()) {
+            Text(
+                text = errorMessage,
+                color = MaterialTheme.colors.error,
+                style = MaterialTheme.typography.caption,
+                modifier = Modifier.padding(start = 16.dp)
+            )
         }
     }
 }

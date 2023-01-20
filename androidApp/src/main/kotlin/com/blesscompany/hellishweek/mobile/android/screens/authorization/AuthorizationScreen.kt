@@ -2,8 +2,10 @@ package com.blesscompany.hellishweek.mobile.android.screens.authorization
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
@@ -42,57 +44,58 @@ fun AuthorizationScreen(
                 AuthorizationScreenViewModel.Event.RestorePassword(email)
             )
         })
-    Box(
+
+    Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
-        contentAlignment = Alignment.Center
+            .verticalScroll(rememberScrollState())
+            .padding(16.dp)
+            .imePadding(),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Column(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            AuthorizationForm(
-                onBack = onBack,
-                state = state,
-                sendEvent = viewModel::sendEvent
+        Spacer(modifier = Modifier.weight(1f))
+        AuthorizationForm(
+            onBack = onBack,
+            state = state,
+            sendEvent = viewModel::sendEvent
+        )
+
+        val annotatedLinkString: AnnotatedString = buildAnnotatedString {
+            val str =
+                stringResource(id = Resources.strings.not_registered_yet.resourceId)
+            val startIndex = str.indexOf("?") + 1
+            val end = str.lastIndex + 1
+            append(str)
+            addStyle(
+                style = SpanStyle(
+                    color = Boulder,
+                    fontSize = 13.sp,
+                    textDecoration = TextDecoration.None
+                ), start = startIndex, end = end
             )
-
-            val annotatedLinkString: AnnotatedString = buildAnnotatedString {
-                val str =
-                    stringResource(id = Resources.strings.not_registered_yet.resourceId)
-                val startIndex = str.indexOf("?") + 1
-                val end = str.lastIndex + 1
-                append(str)
-                addStyle(
-                    style = SpanStyle(
-                        color = Boulder,
-                        fontSize = 13.sp,
-                        textDecoration = TextDecoration.None
-                    ), start = startIndex, end = end
-                )
-            }
-
-            Spacer(modifier = Modifier.height(30.dp))
-
-            ClickableText(text = annotatedLinkString, onClick = {
-                goToRegistration()
-            })
-
-            TextButton(onClick = { dialogVisible = true }) {
-                Text(text = stringResource(id = Resources.strings.remember_my_password.resourceId))
-            }
         }
 
-        DefaultButton(
-            modifier = Modifier
-                .width(120.dp)
-                .align(Alignment.BottomEnd)
-                .padding(bottom = 100.dp),
-            text = stringResource(id = Resources.strings.sign_in.resourceId),
-            onClick = { viewModel.sendEvent(AuthorizationScreenViewModel.Event.SignIn) },
-            isLoading = state.isLoading
-        )
+        Spacer(modifier = Modifier.height(30.dp))
+
+        ClickableText(text = annotatedLinkString, onClick = {
+            goToRegistration()
+        })
+
+        TextButton(onClick = { dialogVisible = true }) {
+            Text(text = stringResource(id = Resources.strings.remember_my_password.resourceId))
+        }
+
+        Spacer(modifier = Modifier.weight(.5f))
+        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+            DefaultButton(
+                modifier = Modifier
+                    .width(120.dp),
+                text = stringResource(id = Resources.strings.sign_in.resourceId),
+                onClick = { viewModel.sendEvent(AuthorizationScreenViewModel.Event.SignIn) },
+                isLoading = state.isLoading
+            )
+        }
+        Spacer(modifier = Modifier.weight(.5f))
     }
 }
 

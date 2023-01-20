@@ -6,6 +6,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -28,6 +29,6 @@ fun DefaultButton(
             color = Color.White,
             modifier = Modifier.size(20.dp)
         )
-        else Text(text = text)
+        else Text(text = text.uppercase())
     }
 }
