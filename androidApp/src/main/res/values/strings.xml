@@ -1,3 +1,3 @@
 <resources>
-    <string name="test">Test string in androidApp</string>
+    <string name="test" translatable="false">Test string in androidApp</string>
 </resources>

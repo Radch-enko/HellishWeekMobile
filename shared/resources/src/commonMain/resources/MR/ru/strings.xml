@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Адская неделя</string>
+
+    <!--Preview screen-->
+    <string name="registration">Регистрация</string>
+    <string name="sign_in">Войти в аккаунт</string>
+    <string name="improve_yourself">Совершенствуйтесь</string>
+    <string name="improve_yourself_desc">Выполняйте челленджи каждую неделю и становитесь лучше
+    </string>
+
+    <!--Registration screen-->
+    <string name="your_info">Ваши данные</string>
+    <string name="name_placeholder">Имя</string>
+    <string name="birthday_placeholder">Дата рождения</string>
+    <string name="country_placeholder">Страна</string>
+    <string name="gender_placeholder">Пол</string>
+    <string name="already_have_account">Уже есть аккаунт? Авторизуйтесь</string>
+    <string name="not_registered_yet">Нет аккаунта? Зарегистрируйтесь!</string>
+    <string name="next">Далее</string>
+    <string name="email_placeholder">Почта</string>
+    <string name="password_placeholder">Пароль</string>
+    <string name="password_again_placeholder">Проверка пароля</string>
+    <string name="cant_remember">Не помню</string>
+
+    <!--Registration Form Validation-->
+    <string name="name_is_empty">Имя не должно быть пустым</string>
+    <string name="date_is_empty">Дата не должна быть пустым</string>
+    <string name="country_is_empty">Страна не указана</string>
+    <string name="gender_is_empty">Не указан пол</string>
+    <string name="email_incorrect">Неправильная почта</string>
+    <string name="password_again_incorrect">Пароли не совпадают</string>
+    <string name="check_all_fields">Проверьте все поля</string>
+
+    <!--Authorization screen-->
+    <string name="remember_my_password">Забыл пароль</string>
+    <string name="restore_my_password">Восстановление пароля</string>
+    <string name="restore_my_password_desc">Напишите свою почту, привязанную к аккаунта и на неё мы отправим код</string>
+    <string name="get_reset_code">Получить код</string>
+    <string name="back_return">Вернуться</string>
+
+    <!--Authorization validation-->
+    <string name="password_requirement_characters">
+        Как минимум 8 символов
+    </string>
+
+    <string name="password_requirement_capital">
+        Символ в верхнем регистре
+    </string>
+
+    <string name="password_requirement_digit">
+        Как минимум одна цифра
+    </string>
+    <string name="password_is_empty">Пароль не заполнен</string>
+    <string name="username_is_empty">Логин не заполнен</string>
+    <string name="create_account">Создать аккаунт</string>
+    <string name="password_requirement_satisfied">
+        %s, успешно
+    </string>
+    <string name="password_requirement_needed">
+        %s, необходимо
+    </string>
+    <string name="passwords_are_same">Пароли совпадают</string>
+    <string name="sign_in_form_incorrect">Неправильные почта или пароль</string>
+
+    <!--Country Searcher-->
+    <string name="search">Поиск</string>
+    <string name="example_error">Пример ошибки</string>
+
+</resources>

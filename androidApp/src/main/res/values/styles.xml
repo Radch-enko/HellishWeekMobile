@@ -1,3 +1,13 @@
-<resources>
-    <style name="AppTheme" parent="android:Theme.Material.NoActionBar"/>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme" parent="android:Theme.Material.NoActionBar">
+        <item name="android:statusBarColor">#00000000</item>
+        <item name="android:navigationBarColor">#00000000</item>
+    </style>
+
+    <style name="Theme.AppSplash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@drawable/waves_background</item>
+
+        <item name="postSplashScreenTheme">@style/AppTheme</item>
+    </style>
 </resources>
