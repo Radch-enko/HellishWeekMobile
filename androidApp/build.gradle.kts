@@ -25,6 +25,10 @@ android {
             isMinifyEnabled = false
         }
     }
+    compileOptions {
+        sourceCompatibility(JavaVersion.VERSION_1_8)
+        targetCompatibility(JavaVersion.VERSION_1_8)
+    }
 }
 
 dependencies {
@@ -35,6 +39,7 @@ dependencies {
     implementation(Dependencies.AndroidX.Compose.ToolingPreview)
     implementation(Dependencies.AndroidX.Compose.Foundation)
     implementation(Dependencies.AndroidX.Compose.Material)
+    implementation(Dependencies.AndroidX.Compose.Material3)
     implementation(Dependencies.AndroidX.Compose.MaterialIcons)
     implementation(Dependencies.AndroidX.Compose.Activity)
     implementation(Dependencies.AndroidX.Compose.Navigation)

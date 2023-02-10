@@ -23,7 +23,7 @@ fun ApplicationRoot(navController: NavHostController) {
         composable(SplashRoute.route) {
             StartSplashScreen {
                 navController.popBackStack()
-                navController.navigate(AuthRoute.Preview.route)
+                navController.navigate(Graph.AUTHENTICATION)
             }
         }
         authNavGraph(navController)

@@ -8,6 +8,7 @@ object Dependencies {
             const val toolingPreview = "1.2.1"
             const val foundation = "1.2.1"
             const val material = "1.2.1"
+            const val material3 = "1.0.1"
             const val activity = "1.5.1"
             const val navigationCompose = "2.5.3"
             const val splashScreen = "1.0.0"
@@ -21,6 +22,7 @@ object Dependencies {
                 "androidx.compose.foundation:foundation:$foundation"
             const val Material =
                 "androidx.compose.material:material:$material"
+            const val Material3 = "androidx.compose.material3:material3:$material3"
             const val MaterialIcons =
                 "androidx.compose.material:material-icons-extended:$ui"
             const val Activity =

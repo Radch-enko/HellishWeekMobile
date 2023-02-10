@@ -3,6 +3,8 @@ package com.blesscompany.hellishweek.mobile.android.ui
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -170,4 +172,130 @@ fun HellishWeekTheme(
         shapes = shapes,
         content = content
     )
+}
+
+@Composable
+fun HellishWeek3Theme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+) {
+    val fontFamily = FontFamily(
+        listOf(
+            Font(
+                Resources.fonts.sfprodisplayblackitlic.sfprodisplayblackitlic.fontResourceId,
+                style = FontStyle.Italic
+            ),
+            Font(
+                Resources.fonts.sfprodisplaybold.sfprodisplaybold.fontResourceId,
+                weight = FontWeight.Bold
+            ),
+            Font(
+                Resources.fonts.sfprodisplaybolditalic.sfprodisplaybolditalic.fontResourceId,
+                style = FontStyle.Italic,
+                weight = FontWeight.Bold
+            ),
+            Font(
+                Resources.fonts.sfprodisplayheavyitalic.sfprodisplayheavyitalic.fontResourceId,
+                style = FontStyle.Italic,
+                weight = FontWeight.ExtraBold
+            ),
+            Font(
+                Resources.fonts.sfprodisplayhintitalic.sfprodisplayhintitalic.fontResourceId,
+                style = FontStyle.Italic,
+                weight = FontWeight.Thin
+            ),
+            Font(
+                Resources.fonts.sfprodisplaylightitalic.sfprodisplaylightitalic.fontResourceId,
+                style = FontStyle.Italic,
+                weight = FontWeight.Light
+            ),
+            Font(
+                Resources.fonts.sfprodisplaymedium.sfprodisplaymedium.fontResourceId,
+                weight = FontWeight.Medium
+            ),
+            Font(Resources.fonts.sfprodisplayregulator.sfprodisplayregulator.fontResourceId),
+            Font(
+                Resources.fonts.sfprodisplayultralightitalic.sfprodisplayultralightitalic.fontResourceId,
+                weight = FontWeight.ExtraLight,
+                style = FontStyle.Italic
+            ),
+        )
+    )
+    val palette = lightColorScheme(
+        primary = Color(0xFFF2905F),
+        secondaryContainer = Color(0xFFF2905F),
+        onSecondaryContainer = Color.White,
+        secondary = Color(0xFF88d2f7),
+        error = Cinnabar,
+        onSecondary = Color.White
+    )
+    val typography = androidx.compose.material3.Typography(
+        displayLarge = TextStyle(
+            fontWeight = FontWeight.Light,
+            fontSize = 60.sp,
+            letterSpacing = (-0.5).sp,
+            fontFamily = fontFamily
+        ),
+        displayMedium = TextStyle(
+            fontWeight = FontWeight.Normal,
+            fontSize = 48.sp,
+            letterSpacing = 0.sp,
+            fontFamily = fontFamily
+        ),
+        displaySmall = TextStyle(
+            fontWeight = FontWeight.Normal,
+            fontSize = 34.sp,
+            letterSpacing = 0.25.sp,
+            fontFamily = fontFamily
+        ),
+        headlineLarge = TextStyle(
+            fontWeight = FontWeight.Normal,
+            fontSize = 24.sp,
+            letterSpacing = 0.sp,
+            fontFamily = fontFamily
+        ),
+        headlineMedium = TextStyle(
+            fontWeight = FontWeight.Medium,
+            fontSize = 20.sp,
+            letterSpacing = 0.15.sp,
+            fontFamily = fontFamily
+        ),
+        titleLarge = TextStyle(
+            fontWeight = FontWeight.Normal,
+            fontSize = 16.sp,
+            letterSpacing = 0.15.sp,
+            fontFamily = fontFamily
+        ),
+        titleMedium = TextStyle(
+            fontWeight = FontWeight.Medium,
+            fontSize = 14.sp,
+            letterSpacing = 0.1.sp,
+            fontFamily = fontFamily
+        ),
+        bodyLarge = TextStyle(
+            fontWeight = FontWeight.Normal,
+            fontSize = 16.sp,
+            letterSpacing = 0.5.sp,
+            fontFamily = fontFamily
+        ),
+        bodyMedium = TextStyle(
+            fontWeight = FontWeight.Normal,
+            fontSize = 14.sp,
+            letterSpacing = 0.25.sp,
+            fontFamily = fontFamily
+        )
+    )
+    val shapes = androidx.compose.material3.Shapes(
+        small = RoundedCornerShape(4.dp),
+        medium = RoundedCornerShape(4.dp),
+        large = RoundedCornerShape(0.dp),
+    )
+
+    androidx.compose.material3.MaterialTheme(
+        colorScheme = palette,
+        typography = typography,
+        shapes = shapes
+    ) {
+        content()
+    }
 }

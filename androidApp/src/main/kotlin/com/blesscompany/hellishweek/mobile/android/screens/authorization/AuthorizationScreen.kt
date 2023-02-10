@@ -49,7 +49,7 @@ fun AuthorizationScreen(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(16.dp)
+            .defaultPadding()
             .imePadding(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -89,7 +89,7 @@ fun AuthorizationScreen(
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
             DefaultButton(
                 modifier = Modifier
-                    .width(120.dp),
+                    .defaultMinSize(minWidth = 140.dp),
                 text = stringResource(id = Resources.strings.sign_in.resourceId),
                 onClick = { viewModel.sendEvent(AuthorizationScreenViewModel.Event.SignIn) },
                 isLoading = state.isLoading

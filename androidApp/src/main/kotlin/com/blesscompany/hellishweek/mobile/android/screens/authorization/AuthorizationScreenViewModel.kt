@@ -3,7 +3,6 @@ package com.blesscompany.hellishweek.mobile.android.screens.authorization
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.blesscompany.hellishweek.common.utils.isEmailValid
-import com.blesscompany.hellishweek.common.utils.isPasswordValid
 import com.blesscompany.hellishweek.resources.Resources
 import dev.icerock.moko.resources.StringResource
 import kotlinx.coroutines.delay
@@ -56,10 +55,10 @@ class AuthorizationScreenViewModel : ViewModel() {
                 // TODO("Restore password call request")
             }
             is Event.TypeEmail -> {
-                mutableStateFlow.update { State(event.email, it.password, null) }
+                mutableStateFlow.update { it.copy(email = event.email.trim()) }
             }
             is Event.TypePassword -> {
-                mutableStateFlow.update { State(it.email, event.password, null) }
+                mutableStateFlow.update { it.copy(password = event.password.trim()) }
             }
         }
     }

@@ -1,5 +1,7 @@
 package com.blesscompany.hellishweek.mobile.android.ui.components
 
+import android.app.DatePickerDialog
+import android.widget.DatePicker
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.*
@@ -10,22 +12,18 @@ import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.blesscompany.hellishweek.common.utils.toPrettyString
 import com.blesscompany.hellishweek.mobile.android.ui.Mercury
 import com.blesscompany.hellishweek.mobile.android.ui.YourPink
-import com.maxkeppeker.sheets.core.models.base.SheetState
-import com.maxkeppeker.sheets.core.models.base.rememberSheetState
-import com.maxkeppeler.sheets.date_time.DateTimeDialog
-import com.maxkeppeler.sheets.date_time.models.DateTimeSelection
-import kotlinx.datetime.LocalDate
-import kotlinx.datetime.toKotlinLocalDate
+import java.util.*
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun DatePickerTextField(
-    value: LocalDate?,
-    onDateSelected: (LocalDate) -> Unit,
+    maxYear: Int,
+    value: String?,
+    onDateSelected: (String) -> Unit,
     placeholder: String,
     errorMessage: String?
 ) {
@@ -33,7 +31,6 @@ fun DatePickerTextField(
 
     DatePickerDialog(
         visible = pickerVisible,
-        onCloseRequest = { pickerVisible = false },
         onDateSelected = onDateSelected
     )
 
@@ -64,7 +61,7 @@ fun DatePickerTextField(
                 ) {
 
                     AnimatedContent(
-                        targetState = value?.toPrettyString() ?: placeholder
+                        targetState = value ?: placeholder
                     ) {
                         MediumAlphaText(
                             text = it,
@@ -97,17 +94,20 @@ fun DatePickerTextField(
 @Composable
 private fun DatePickerDialog(
     visible: Boolean,
-    onCloseRequest: (SheetState.() -> Unit)? = null,
-    onDateSelected: (LocalDate) -> Unit,
+    onDateSelected: (String) -> Unit,
 ) {
-    val state = rememberSheetState(visible = false, onCloseRequest = onCloseRequest)
 
-    DateTimeDialog(
-        state = state,
-        selection = DateTimeSelection.Date { newDate ->
-            onDateSelected(newDate.toKotlinLocalDate())
-        }
+    val calendar = Calendar.getInstance()
+    val curYear = calendar.get(Calendar.YEAR)
+    val curMonth = calendar.get(Calendar.MONTH)
+    val curDay = calendar.get(Calendar.DAY_OF_MONTH)
+    calendar.time = Date()
+
+    val datePickerDialog = DatePickerDialog(
+        LocalContext.current,
+        { _: DatePicker, year: Int, month: Int, dayOfMonth: Int ->
+            onDateSelected("$dayOfMonth/$month/$year")
+        }, curYear, curMonth, curDay
     )
-
-    if (visible) state.show() else state.hide()
+    if (visible) datePickerDialog.show() else datePickerDialog.hide()
 }

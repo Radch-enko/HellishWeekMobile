@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.blesscompany.hellishweek.mobile.android.ui.Alto
 import com.blesscompany.hellishweek.mobile.android.ui.components.BackButton
 import com.blesscompany.hellishweek.mobile.android.ui.components.ErrorMessage
+import com.blesscompany.hellishweek.mobile.android.ui.components.defaultPadding
 import com.blesscompany.hellishweek.resources.Resources
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -108,7 +109,7 @@ fun CountryListItem(countryEntity: CountryEntity, onItemSelected: () -> Unit) {
     Column(modifier = Modifier.clickable { onItemSelected() }) {
         Text(
             text = countryEntity.name,
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
+            modifier = Modifier.defaultPadding()
         )
         Divider()
     }

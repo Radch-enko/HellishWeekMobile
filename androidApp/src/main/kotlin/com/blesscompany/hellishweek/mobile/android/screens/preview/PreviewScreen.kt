@@ -33,8 +33,9 @@ fun PreviewScreen(goToRegistration: () -> Unit, goToAuthorization: () -> Unit) {
             modifier = Modifier.padding(top = 120.dp)
         )
 
+        Spacer(modifier = Modifier.weight(1f))
+
         Column(
-            modifier = Modifier.padding(top = 120.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             AlternativeButton(

@@ -11,6 +11,7 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
@@ -20,6 +21,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.blesscompany.hellishweek.common.Constants
 import com.blesscompany.hellishweek.common.utils.Gender
 import com.blesscompany.hellishweek.features.registration.PasswordRequirements
 import com.blesscompany.hellishweek.mobile.android.ui.Boulder
@@ -62,18 +64,21 @@ fun RegistrationScreen(
         viewModel.sendEvent(RegistrationScreenViewModel.Event.InterCountry(selectedCountry))
     }
 
+    val screenHeight = LocalConfiguration.current.screenHeightDp.dp
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .padding(16.dp)
+            .systemBarsPadding()
             .imePadding(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
     ) {
         Spacer(modifier = Modifier.weight(1f))
         Box(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
+                .defaultPadding()
         ) {
             BackButton(modifier = Modifier.align(Alignment.CenterStart), onButtonClick = {
                 if (pagerState.currentPage == 0) {
@@ -88,18 +93,20 @@ fun RegistrationScreen(
                 style = MaterialTheme.typography.h5,
             )
         }
-        Spacer(modifier = Modifier.height(30.dp))
         CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
             Text(text = stringResource(id = Resources.strings.your_info.resourceId))
         }
-        Spacer(modifier = Modifier.height(30.dp))
-        HorizontalPager(count = 2, state = pagerState, userScrollEnabled = false) {
+        HorizontalPager(
+            count = 2,
+            state = pagerState,
+            userScrollEnabled = false
+        ) {
             Column(
-                modifier = Modifier,
+                modifier = Modifier.defaultPadding(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                when (currentPage) {
+                when (it) {
                     0 -> {
                         FirstPartOfRegistrationSlide(
                             state, viewModel::sendEvent, goToCountrySearcher
@@ -109,37 +116,38 @@ fun RegistrationScreen(
                         SecondPartOfRegistrationSlide(state, viewModel::sendEvent)
                     }
                 }
-
-                val annotatedLinkString: AnnotatedString = buildAnnotatedString {
-                    val str = stringResource(id = Resources.strings.already_have_account.resourceId)
-                    val startIndex = str.indexOf("?") + 1
-                    val end = str.lastIndex + 1
-                    append(str)
-                    addStyle(
-                        style = SpanStyle(
-                            color = Boulder, fontSize = 13.sp, textDecoration = TextDecoration.None
-                        ), start = startIndex, end = end
-                    )
-                    pushStringAnnotation("Action", "SignIn")
-                }
-
-                Spacer(modifier = Modifier.height(30.dp))
-
-                ClickableText(text = annotatedLinkString, onClick = {
-                    goToAuthorization()
-                })
             }
         }
+        val annotatedLinkString: AnnotatedString = buildAnnotatedString {
+            val str = stringResource(id = Resources.strings.already_have_account.resourceId)
+            val startIndex = str.indexOf("?") + 1
+            val end = str.lastIndex + 1
+            append(str)
+            addStyle(
+                style = SpanStyle(
+                    color = Boulder, fontSize = 13.sp, textDecoration = TextDecoration.None
+                ), start = startIndex, end = end
+            )
+            pushStringAnnotation("Action", "SignIn")
+        }
+        ClickableText(text = annotatedLinkString, onClick = {
+            goToAuthorization()
+        })
         Spacer(modifier = Modifier.height(16.dp))
         HorizontalPagerIndicator(pagerState = pagerState)
         state.error?.let {
             ErrorMessage(value = it.resourceId, style = MaterialTheme.typography.body1)
         }
         Spacer(modifier = Modifier.weight(.5f))
-        Row(modifier = Modifier.fillMaxSize(), horizontalArrangement = Arrangement.End) {
+        Row(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 16.dp),
+            horizontalArrangement = Arrangement.End
+        ) {
             DefaultButton(
                 modifier = Modifier
-                    .width(140.dp),
+                    .defaultMinSize(minWidth = 140.dp),
                 text = if (pagerState.currentPage == 0) stringResource(id = Resources.strings.next.resourceId) else stringResource(
                     id = Resources.strings.registration.resourceId
                 ), onClick = {
@@ -171,8 +179,9 @@ private fun FirstPartOfRegistrationSlide(
 
     Spacer(modifier = Modifier.height(16.dp))
     DatePickerTextField(
+        maxYear = Constants.MAX_USER_BIRTHYEAR,
         value = state.date,
-        onDateSelected = { date: kotlinx.datetime.LocalDate ->
+        onDateSelected = { date: String ->
             sendEvent(
                 RegistrationScreenViewModel.Event.InterDate(date)
             )

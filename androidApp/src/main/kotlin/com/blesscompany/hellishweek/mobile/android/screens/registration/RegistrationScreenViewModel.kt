@@ -10,7 +10,6 @@ import dev.icerock.moko.resources.StringResource
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import kotlinx.datetime.LocalDate
 import timber.log.Timber
 
 class RegistrationScreenViewModel : ViewModel() {
@@ -18,7 +17,7 @@ class RegistrationScreenViewModel : ViewModel() {
     data class State(
         val name: String = "",
         val nameError: StringResource? = null,
-        val date: LocalDate? = null,
+        val date: String? = null,
         val dateError: StringResource? = null,
         val country: String = "",
         val countryError: StringResource? = null,
@@ -49,7 +48,7 @@ class RegistrationScreenViewModel : ViewModel() {
         object Next : Event()
 
         class InterName(val name: String) : Event()
-        class InterDate(val date: LocalDate?) : Event()
+        class InterDate(val date: String?) : Event()
         class InterCountry(val country: String) : Event()
         class InterGender(val gender: Gender) : Event()
         class InterEmail(val email: String) : Event()
