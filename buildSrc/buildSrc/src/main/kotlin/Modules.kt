@@ -14,5 +14,6 @@ object Modules {
         const val authorization = "$features:authorization"
         const val registration = "$features:registration"
         const val home = "$features:home"
+        const val notifications = "$features:notifications"
     }
 }

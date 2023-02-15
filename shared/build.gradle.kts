@@ -33,6 +33,7 @@ kotlin {
                 api(project(Modules.Features.authorization))
                 api(project(Modules.Features.registration))
                 api(project(Modules.Features.home))
+                api(project(Modules.Features.notifications))
             }
         }
         val androidMain by getting {

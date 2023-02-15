@@ -1,7 +1,9 @@
 package com.blesscompany.hellishweek.mobile.android.data
 
+import com.blesscompany.hellishweek.common.utils.toPrettyTimeString
 import com.blesscompany.hellishweek.common.utils.toPrettyWithMonthString
 import com.blesscompany.hellishweek.features.home.ChallengeCardUI
+import com.blesscompany.hellishweek.features.notifications.presentation.NotificationCardUI
 import kotlinx.datetime.*
 
 object SampleData {
@@ -25,6 +27,25 @@ object SampleData {
                 )
             )
         }
+        return mutableList
+    }
+
+    fun getNotifications(): List<NotificationCardUI> {
+        val mutableList = mutableListOf<NotificationCardUI>()
+
+        val now = Clock.System.now().toLocalDateTime(TimeZone.currentSystemDefault())
+
+        repeat(10) { index ->
+            mutableList.add(
+                NotificationCardUI(
+                    type = "Title of notification $index",
+                    author = "Author $index",
+                    description = "Description $index",
+                    date = now.toPrettyTimeString()
+                )
+            )
+        }
+
         return mutableList
     }
 }
