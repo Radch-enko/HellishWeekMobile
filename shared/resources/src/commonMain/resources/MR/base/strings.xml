@@ -66,4 +66,11 @@
     <!--Country Searcher-->
     <string name="search">Search</string>
     <string name="example_error">Example error</string>
+
+    <!--Main Flow-->
+
+    <!--WeekList Flow-->
+    <string name="train_your_willpower">Train your willpower</string>
+    <string name="challenge_card_start_date">Start: %s</string>
+    <string name="challenge_card_end_date">End: %s</string>
 </resources>

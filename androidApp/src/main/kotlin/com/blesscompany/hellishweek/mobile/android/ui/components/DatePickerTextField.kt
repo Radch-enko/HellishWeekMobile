@@ -21,7 +21,6 @@ import java.util.*
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun DatePickerTextField(
-    maxYear: Int,
     value: String?,
     onDateSelected: (String) -> Unit,
     placeholder: String,

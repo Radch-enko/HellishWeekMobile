@@ -140,7 +140,7 @@ fun SearchTopBar(
 }
 
 @Composable
-fun SearchField(
+private fun SearchField(
     query: String,
     placeholder: String,
     onQueryChange: (String) -> Unit,

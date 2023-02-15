@@ -67,4 +67,10 @@
     <string name="search">Поиск</string>
     <string name="example_error">Пример ошибки</string>
 
+    <!--Main Flow-->
+
+    <!--WeekList Flow-->
+    <string name="train_your_willpower">Тренируй силу воли</string>
+    <string name="challenge_card_start_date">Начало: %s</string>
+    <string name="challenge_card_end_date">Конец: $s</string>
 </resources>

@@ -9,3 +9,9 @@ fun LocalDate.toPrettyString(): String {
             "." +
             "${this.year}"
 }
+
+fun LocalDate.toPrettyWithMonthString(): String {
+    val month = this.month.name
+    return this.dayOfMonth.toString() + " " + month.first().uppercase() + month.substring(1)
+        .lowercase()
+}

@@ -10,9 +10,7 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
-import androidx.navigation.compose.rememberNavController
 import com.blesscompany.hellishweek.mobile.android.navigation.ApplicationRoot
 import com.blesscompany.hellishweek.mobile.android.ui.HellishWeekTheme
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController

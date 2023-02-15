@@ -13,5 +13,6 @@ object Modules {
         private const val features = "$kmmShared:features"
         const val authorization = "$features:authorization"
         const val registration = "$features:registration"
+        const val home = "$features:home"
     }
 }

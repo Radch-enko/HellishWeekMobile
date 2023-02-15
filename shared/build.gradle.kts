@@ -32,6 +32,7 @@ kotlin {
                 api(project(Modules.injector))
                 api(project(Modules.Features.authorization))
                 api(project(Modules.Features.registration))
+                api(project(Modules.Features.home))
             }
         }
         val androidMain by getting {

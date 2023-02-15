@@ -21,7 +21,11 @@ import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 
 @Composable
-fun PreviewScreen(goToRegistration: () -> Unit, goToAuthorization: () -> Unit) {
+fun PreviewScreen(
+    goToRegistration: () -> Unit,
+    openMainGraph: () -> Unit,
+    goToAuthorization: () -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -47,6 +51,8 @@ fun PreviewScreen(goToRegistration: () -> Unit, goToAuthorization: () -> Unit) {
                 text = stringResource(id = Resources.strings.sign_in.resourceId),
                 onClick = goToAuthorization,
             )
+
+            DefaultButton(text = "Test main graph", onClick = { openMainGraph() })
         }
     }
 }

@@ -77,7 +77,9 @@ fun HellishWeekTheme(
             secondary = Color(0xFF88d2f7),
             secondaryVariant = Color(0xFF2A78BF),
             error = Cinnabar,
-            onSecondary = Color.White
+            onSecondary = Color.White,
+            surface = Gallery,
+            background = Color.White
         )
     }
     val typography = Typography(

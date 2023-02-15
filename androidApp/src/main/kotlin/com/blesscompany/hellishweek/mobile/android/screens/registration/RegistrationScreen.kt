@@ -179,7 +179,6 @@ private fun FirstPartOfRegistrationSlide(
 
     Spacer(modifier = Modifier.height(16.dp))
     DatePickerTextField(
-        maxYear = Constants.MAX_USER_BIRTHYEAR,
         value = state.date,
         onDateSelected = { date: String ->
             sendEvent(

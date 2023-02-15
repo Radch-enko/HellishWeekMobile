@@ -25,7 +25,8 @@ fun AuthorizationFlowWrapper(
     AnimatedNavHost(navController = navController, startDestination = AuthRoute.Preview.route) {
         composable(AuthRoute.Preview.route) {
             PreviewScreen(
-                goToRegistration = { navController.navigate(AuthRoute.Registration.route) }
+                goToRegistration = { navController.navigate(AuthRoute.Registration.route) },
+                openMainGraph = { onAuthorization() }
             ) { navController.navigate(AuthRoute.Authorization.route) }
         }
         composable(
